@@ -39,7 +39,7 @@ assign rd_addr = rbin[ASIZE-1:0];
 //FIFO empty on reset or when the next rptr == synchronized wptr
 always@(posedge rd_clk or posedge rd_rst) begin
     if(rd_rst) begin
-        rd_empty <= 0;
+        rd_empty <= 1;
     end
     else 
         rd_empty <= (rgnext == w2r_ptr);

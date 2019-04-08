@@ -36,9 +36,10 @@ assign wr_addr = wbin[ASIZE-1:0];
 always@(posedge wr_clk or posedge wr_rst)begin
     if(wr_rst) wr_full <= 1;
     else begin
-        wr_full <= ((wgnext[ASIZE])   != r2w_ptr[ASIZE]) &&
-                    (wgnext[ASIZE-1]) != r2w_ptr[ASIZE-1] &&
-                    (wgnext[ASIZE-2:0] == r2w_ptr[ASIZE-2:0]);
+        wr_full <= ( wgnext == { ~r2w_ptr[ASIZE:ASIZE-1], r2w_ptr[ASIZE-2:0] } );
+        //wr_full <= ((wgnext[ASIZE])   != r2w_ptr[ASIZE]) &&
+        //            (wgnext[ASIZE-1]) != r2w_ptr[ASIZE-1] &&
+        //            (wgnext[ASIZE-2:0] == r2w_ptr[ASIZE-2:0]);
     end
 end
 

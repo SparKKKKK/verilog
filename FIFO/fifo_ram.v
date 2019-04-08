@@ -2,10 +2,10 @@ module fifo_ram#(
     parameter DSIZE=8,
     parameter ASIZE=4
     )(
-    input wr_clk,
+    input             wr_clk,
     input [DSIZE-1:0] wr_data,
-    input rd_inc,wr_inc,
-    input wr_full,
+    input             rd_inc,wr_inc,
+    input             wr_full,
     input [ASIZE-1:0] rd_addr,wr_addr,
 
     output reg [DSIZE-1:0] rd_data

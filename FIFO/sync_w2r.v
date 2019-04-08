@@ -16,6 +16,7 @@ always@(posedge rd_clk or posedge rd_rst) begin
     //{w2r_ptr,med_ptr2} <= 0;
   end
   else begin
+  //2 step reg to avoid yawentai
     w2r_ptr <= med_ptr2;
     med_ptr2 <= wr_ptr;
     //{w2r_ptr,med_ptr2} <= {med_ptr2,wr_ptr};
